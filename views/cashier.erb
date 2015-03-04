@@ -4,22 +4,16 @@
 <% if @products.any? %>
 <ul>
   <% @products.each do |product| %>
-  <li><h4><%= product.name %> </h4>
+  <li><a href="/add_product/item/<%= product.id %>"><h4><%= product.name %></a> </h4>
     <p><%= product.description %><br>
       $<%= product.price.to_s %>
     </p>
     <div class="checkbox">
       <label>
-        <input type="checkbox" value="">
+        <input type="checkbox" name="product" value="<%= product.id %>">
         Add to cart
       </label><br>
-      <label>
-        <input type="checkbox" value="">
-        Remove Item
-      </label>
     </div>
-
-
 
 
   </li>
@@ -27,14 +21,13 @@
   <% end %>
 </ul>
 <button type="submit" class="btn btn-primary">Add Item</button>
-<button type="submit" class="btn btn-danger">Delete</button>
 
 <% else %>
 
 <p>Nothing yet.</p>
 
 <% end %>
-
+<br>
 
 
 

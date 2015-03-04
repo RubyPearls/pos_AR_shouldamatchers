@@ -30,3 +30,14 @@ get "/cashier" do
   @products = Product.all
   erb :cashier
 end
+
+get '/add_product/item/:id' do
+  @product = Product.find(params["id"].to_i)
+  erb :product_edit
+end
+
+delete '/add_product/item/:id' do
+  @product = Product.find(params["id"].to_i)
+  @product.delete
+  redirect "/cashier"
+end
