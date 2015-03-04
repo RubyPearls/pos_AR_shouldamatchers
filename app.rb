@@ -41,3 +41,19 @@ delete '/add_product/item/:id' do
   @product.delete
   redirect "/cashier"
 end
+
+post '/checkout' do
+  purchase = Purchase.new()
+  params.product_ids.each do |product_id|
+    this_product = Product.find(product_id)
+    purchase.products.push(this_product)
+  end
+
+  @checked_items = Purchase.all
+  erb :checkout
+end
+
+get "/checkout" do
+  @checked_items = Purchase.all
+  erb :checkout
+end

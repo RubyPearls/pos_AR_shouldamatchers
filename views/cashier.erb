@@ -1,7 +1,8 @@
 <h1> Item List </h1>
 
-
+<form action="/checkout" method="post">
 <% if @products.any? %>
+
 <ul>
   <% @products.each do |product| %>
   <li><a href="/add_product/item/<%= product.id %>"><h4><%= product.name %></a> </h4>
@@ -10,7 +11,7 @@
     </p>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="product" value="<%= product.id %>">
+        <input type="checkbox" name="product_ids[]" value="<%= product.id %>">
         Add to cart
       </label><br>
     </div>
@@ -21,6 +22,8 @@
   <% end %>
 </ul>
 <button type="submit" class="btn btn-primary">Add Item</button>
+
+</form>
 
 <% else %>
 
